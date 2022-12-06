@@ -14,13 +14,16 @@ const initdb = async () =>
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => console.error('putDb not implemented');
+const constantDb = await openDB ('jate',1);
+const trx = constantDb.transaction('jate', 'readwrite');
+const store = trx.objectStore('jate');
+const req = store.put(content);
+const res = await req;
+console.log('Saved Data', res);
+return result;
 
-const jateDb = await openDB('jate', 1);
-const tx = jateDb.transaction('jate', 'readwrite');
-const request = store.put({id:1, value: content});
-console.log (request);
 
-const result = await request;
+// const result = await request;
 console.log('Saved Data', result);
 return result;
 
@@ -28,13 +31,12 @@ return result;
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => console.error('getDb not implemented');
 const jateDb = await openDB ('jate',1);
-const tx = jateDb.transaction('jate','readonly);
-const store = tx.objectStore('jate');
-const request = store.getAll();
-
-const
-
-
+const tx = jateDb.transaction('jate', 'readwrite');
+const stor = tx.objectStore('jate');
+const request = stor.getAll();
+const result = await request;
+console.log('Saved Data', result);
+return result;
 
 
 initdb();
