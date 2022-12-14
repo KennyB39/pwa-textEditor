@@ -9,8 +9,13 @@
         "server": "cd server nodemon server.js --ignore client",
         "build": "cd client && npm run build",
         "install": "cd server && npm i && cd ../client && npm i",
-        "client": "cd client && npm start"
+        "client": "cd client && npm start",
+        "heroku-postbuild": "npm run build"
     },
+    "engines": {
+        "npm": "5.6.0",
+        "node": "8.10.0"
+      },
     "keywords": [],
     "author": "",
     "license": "ISC",
