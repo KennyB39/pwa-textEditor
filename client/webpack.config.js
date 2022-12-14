@@ -1,14 +1,14 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
-const {injectManifest} = require('workbox-webpack-plugin');
+const {InjectManifest} = require('workbox-webpack-plugin');
 
 module.exports = () => {
   return{
     mode: 'development',
     entry: {
-      main: './src/index.js',
-      install: './src/install.js'
+      main: './src/js/index.js',
+      install: './src/js/install.js'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -18,11 +18,11 @@ module.exports = () => {
       new HTMLWebpackPlugin({
         
         title: 'PWA Demo',
-        template: './src/index.html',
+        template: './index.html',
       }),
-      new injectManifest({
-        swsrc: './src-sw.js',
-        swDest: 'sw.js'
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
         fingerprints: false,
@@ -30,8 +30,8 @@ module.exports = () => {
         name: 'Just Another Text Editor',
         short_name: 'JATE',
         description: 'A simple text editor',
-        background_color: '##225ca3',
-        theme_color: '##225ca3',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
         icons: [
