@@ -16,12 +16,12 @@ module.exports = () => {
     },
     plugins: [
       new HTMLWebpackPlugin({
-        template: './src/index.html',
+        
         title: 'PWA Demo',
-        chunks: ['main']
+        template: './src/index.html',
       }),
       new injectManifest({
-        swsrc: './src/sw.js',
+        swsrc: './src-sw.js',
         swDest: 'sw.js'
       }),
       new WebpackPwaManifest({
